@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <p>
-      All <span>|</span>
+      <Link to="/">All</Link> <span>|</span>
       Cooking <span>|</span>
       Football <span>|</span>
       Coding
