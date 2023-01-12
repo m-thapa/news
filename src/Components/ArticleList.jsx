@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getAllArticles } from "../utils/api";
-import Navbar from "./Navbar";
+
 
 const ArticleList = () => {
   const [ArticleList, setArticleList] = useState([]);
@@ -19,7 +19,6 @@ const ArticleList = () => {
 
   return (
     <main className="Articles">
-      <Navbar/>
       <ul className="Article-list">
         {ArticleList.map((article) => {
           return (
