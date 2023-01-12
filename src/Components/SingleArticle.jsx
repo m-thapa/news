@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { getSingleArticle } from "../utils/api";
 import { useParams } from "react-router-dom";
+import Comments from "./Comments";
 
 
 const SingleArticle = () => {
+  const [comments,setComments] = useState({})
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState([true]);
   const { article_id } = useParams();
@@ -28,6 +30,7 @@ const SingleArticle = () => {
         <h4 className="Article-Author">{article.author}</h4>
         <h6 className="Article-Date">{date}</h6>
       </div>
+      <Comments comments={comments} setComments={setComments} />
     </main>
   );
 };
