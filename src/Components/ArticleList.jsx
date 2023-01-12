@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getAllArticles } from "../utils/api";
-import Navbar from "./Navbar";
+import { Link } from "react-router-dom";
 
 const ArticleList = () => {
   const [ArticleList, setArticleList] = useState([]);
@@ -19,14 +19,16 @@ const ArticleList = () => {
 
   return (
     <main className="Articles">
-      <Navbar/>
       <ul className="Article-list">
         {ArticleList.map((article) => {
           return (
-            <li key={article.article_id}>
-              <h2 className="article-title">{article.title}</h2>
-              <h3 className="article-author">{article.author}</h3>
-            </li>
+            <Link to={`/articles/${article.article_id}`}>
+              <li key={article.article_id}>
+                <h2 className="article-title">{article.title}</h2>
+
+                <h3 className="article-author">{article.author}</h3>
+              </li>
+            </Link>
           );
         })}
       </ul>
