@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const newsApi = axios.create({
-  baseURL: "https://news-api-gyb2.onrender.com/api",
+  baseURL: "https://news-api-e47o.onrender.com/api",
 });
 
 export const getAllArticles = () => {
@@ -20,4 +20,12 @@ export const getCommentsByArticleId = (article_id) => {
   return newsApi.get(`/articles/${article_id}/comments`).then((res) => {
     return res.data;
   });
+};
+
+export const patchArticle = (article_id, increaseOrDecrease) => {
+  return newsApi
+    .patch(`/articles/${article_id}`, { inc_votes: increaseOrDecrease })
+    .then((res) => {
+      return res.data;
+    });
 };
