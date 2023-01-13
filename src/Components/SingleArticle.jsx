@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { getSingleArticle } from "../utils/api";
 import { useParams } from "react-router-dom";
 import Comments from "./Comments";
-
+import VoteModifier from "./VoteModifier";
 
 const SingleArticle = () => {
-  const [comments,setComments] = useState({})
+  const [comments, setComments] = useState({});
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState([true]);
   const { article_id } = useParams();
@@ -21,7 +21,7 @@ const SingleArticle = () => {
     return <p>Loading ...</p>;
   }
 
-  const date = article.created_at.split("T")[0]
+  const date = article.created_at.split("T")[0];
   return (
     <main>
       <div className="Single-Article">
@@ -29,6 +29,7 @@ const SingleArticle = () => {
         <h5> {article.body}</h5>
         <h4 className="Article-Author">{article.author}</h4>
         <h6 className="Article-Date">{date}</h6>
+        <VoteModifier article_id={article.article_id} votes={article.votes} />
       </div>
       <Comments comments={comments} setComments={setComments} />
     </main>
