@@ -24,9 +24,8 @@ const ArticleList = () => {
           return (
             <Link to={`/articles/${article.article_id}`}>
               <li key={article.article_id}>
-                <h2 className="article-title">{article.title}</h2>
-
-                <h3 className="article-author">{article.author}</h3>
+                <h1>{article.title}</h1>
+                <h2>{article.author}</h2>
               </li>
             </Link>
           );

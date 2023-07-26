@@ -11,24 +11,25 @@ const Comments = ({ comments, setComments }) => {
       setComments(data.comments);
       setIsLoading(false);
     });
-  }, []);
+  });
 
   if (isLoading) return <p>Loading ...</p>;
   if (comments.length === 0) return <p>Nothing to display</p>;
 
   return (
-    <ul>
-      <p>Comments:</p>
+    <section className="mt-10 space-x-2 space-y-2">
+      <p className=" font-semibold mb-4 ">Comments</p>
       {comments.map((comment) => {
         return (
-          <li key={comment.comment_id} className="comment-list">
-            <p>{comment.author}</p>
+          <li className="" key={comment.comment_id}>
             <p className="comment-body">{comment.body}</p>
-            <p>Posted on: {comment.created_at.split("T")[0]}</p>
+            <p className="font-semibold italic">
+              {comment.author} Posted on: {comment.created_at.split("T")[0]}
+            </p>
           </li>
         );
       })}
-    </ul>
+    </section>
   );
 };
 

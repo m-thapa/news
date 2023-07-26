@@ -26,15 +26,15 @@ const VoteModifier = ({ article_id, votes }) => {
 
   return (
     <section>
-      <p className="article-vote"> Votes: {votes + articleVoteInc} </p>
       <MdThumbUp
-        className="upvote-btn"
+        className="inline-block   mx-0.5  "
         onClick={() => {
           upVote(article_id);
         }}
       />
+      {votes + articleVoteInc}
       <MdThumbDown
-        className="downvote-btn"
+        className="downvote-btn inline-block mx-0.5 "
         onClick={() => {
           downVote(article_id);
         }}

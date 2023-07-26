@@ -23,16 +23,19 @@ const SingleArticle = () => {
 
   const date = article.created_at.split("T")[0];
   return (
-    <main>
-      <div className="Single-Article">
-        <h4>{article.title}</h4>
-        <h5> {article.body}</h5>
-        <h4 className="Article-Author">{article.author}</h4>
-        <h6 className="Article-Date">{date}</h6>
+    <>
+      <h1 className="space-x-0.5 text-lg font-bold m-1 p-1 ">
+        {article.title}
+      </h1>
+      <h2 className="m-1 p-1"> {article.body}</h2>
+      <h3 className=" m-1 p-1 font-semibold italic ">
+        by {article.author} {date}
         <VoteModifier article_id={article.article_id} votes={article.votes} />
+      </h3>
+      <div >
+        <Comments comments={comments} setComments={setComments} />
       </div>
-      <Comments comments={comments} setComments={setComments} />
-    </main>
+    </>
   );
 };
 
