@@ -14,24 +14,29 @@ const ArticleList = () => {
   }, []);
 
   if (isLoading) {
-    return <p>Loading ...</p>;
+    return <p className="text-center"> Loading ...</p>;
   }
 
   return (
-    <main className="Articles">
-      <ul className="Article-list">
+    <section>
+      <ul className="container mx-auto my-auto">
         {ArticleList.map((article) => {
           return (
-            <Link to={`/articles/${article.article_id}`}>
-              <li key={article.article_id}>
-                <h1>{article.title}</h1>
+            <Link
+              to={`/articles/${article.article_id}`}
+              key={article.article_id}
+            >
+              <li>
+                <h1 className="text-lg font-bold tracking-tight">
+                  {article.title}
+                </h1>
                 <h2>{article.author}</h2>
               </li>
             </Link>
           );
         })}
       </ul>
-    </main>
+    </section>
   );
 };
 

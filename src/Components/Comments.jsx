@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { getCommentsByArticleId } from "../utils/api";
 
 const Comments = ({ comments, setComments }) => {
+  // const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
 
@@ -11,7 +12,7 @@ const Comments = ({ comments, setComments }) => {
       setComments(data.comments);
       setIsLoading(false);
     });
-  });
+  }, [article_id, setComments]);
 
   if (isLoading) return <p>Loading ...</p>;
   if (comments.length === 0) return <p>Nothing to display</p>;

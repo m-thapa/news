@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const newsApi = axios.create({
-  baseURL: "https://news-api-e47o.onrender.com/api",
+  baseURL: "https://news-api-z9e7.onrender.com/api",
 });
 
 export const getAllArticles = () => {
@@ -27,5 +27,15 @@ export const patchArticle = (article_id, increaseOrDecrease) => {
     .patch(`/articles/${article_id}`, { inc_votes: increaseOrDecrease })
     .then((res) => {
       return res.data;
-    });
-};
+    }); 
+  };
+
+export const postComments =(article_id, newComment) => {
+      return newsApi
+      .post(`/articles/${article_id}/comments`, {
+        username: "grumpy19",
+        body: newComment
+      }).then((res)=> {
+        return res.data.comment
+      })
+}
