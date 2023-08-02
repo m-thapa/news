@@ -3,7 +3,7 @@ import { getAllArticles } from "../utils/api";
 import { Link } from "react-router-dom";
 
 const ArticleList = () => {
-  const [ArticleList, setArticleList] = useState([]);
+  const [articleList, setArticleList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -19,19 +19,23 @@ const ArticleList = () => {
 
   return (
     <section>
-      <ul className="container mx-auto my-auto">
-        {ArticleList.map((article) => {
+      <ul className="container mx-auto my-auto ">
+        {articleList.map((article) => {
           return (
             <Link
               to={`/articles/${article.article_id}`}
               key={article.article_id}
+              className="space-x-0.5 space-y-0.5 m-1 p-1"
             >
               <li>
-                <h1 className="text-lg font-bold tracking-tight">
-                  {article.title}
-                </h1>
+                <h3 className="font-semibold">
+                  {article.topic.charAt(0).toUpperCase() +
+                    article.topic.slice(1)}
+                </h3>
+                <h1 className="font-bold tracking-tight">{article.title}</h1>
                 <h2>{article.author}</h2>
               </li>
+              <p className="border"></p>
             </Link>
           );
         })}

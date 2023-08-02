@@ -20,13 +20,14 @@ const SingleArticle = () => {
     });
   }, [article_id]);
 
-  if (isLoading) {
-    return <p className="text-center">Loading ...</p>;
-  }
-
+  if (isLoading) return <p className="text-center">Loading ...</p>;
   const date = article.created_at.split("T")[0];
+
   return (
     <section>
+      <h4 className="font-semibold space-x-0.5 space-y-0.5 m-1 p-1">
+        {article.topic.charAt(0).toUpperCase() + article.topic.slice(1)}
+      </h4>
       <h1 className="space-x-0.5 space-y-0.5 text-lg font-bold m-1 p-1 tracking-tight">
         {article.title}
       </h1>
@@ -35,6 +36,7 @@ const SingleArticle = () => {
         by {article.author} {date}
         <VoteModifier article_id={article.article_id} votes={article.votes} />
       </h3>
+      
       <CommentAdder article_id={article.article_id} setComments={setComments} />
       <div>
         <Comments comments={comments} setComments={setComments} />

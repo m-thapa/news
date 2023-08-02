@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { getCommentsByArticleId } from "../utils/api";
 
 const Comments = ({ comments, setComments }) => {
-  // const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
 
@@ -22,12 +21,13 @@ const Comments = ({ comments, setComments }) => {
       <p className=" font-semibold mb-4 ">Comments</p>
       {comments.map((comment) => {
         return (
-          <li className="" key={comment.comment_id}>
+          <ul key={comment.comment_id}>
             <p className="comment-body">{comment.body}</p>
             <p className="font-semibold italic">
               {comment.author} Posted on: {comment.created_at.split("T")[0]}
             </p>
-          </li>
+            <p className="border"></p>
+          </ul>
         );
       })}
     </section>

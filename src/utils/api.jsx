@@ -39,3 +39,12 @@ export const postComments =(article_id, newComment) => {
         return res.data.comment
       })
 }
+ 
+// export const getArticleByQuery = (topic)=> {
+//   return newsApi
+//   .get(`/articles`, {
+//     params:{topic:topic},
+//   }).then((res)=> {
+//     return res.data
+//   })
+// }

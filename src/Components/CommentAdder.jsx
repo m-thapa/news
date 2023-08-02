@@ -17,7 +17,6 @@ const CommentAdder = ({ article_id, setComments }) => {
 
     postComments(article_id, newComment)
       .then((postedComment) => {
-        // console.log("POSTED COMMENT", postedComment);
         setComments((comments) => {
           return [...comments, postedComment];
         });
